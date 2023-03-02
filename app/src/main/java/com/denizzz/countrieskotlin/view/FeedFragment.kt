@@ -35,11 +35,14 @@ class FeedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        /* button deleted
         _binding?.feedButton?.setOnClickListener(){
             val action=FeedFragmentDirections.actionFeedFragmentToCountryFragment()
             Navigation.findNavController(it).navigate(action)
         }
+
+ */
+
 
     }
 
