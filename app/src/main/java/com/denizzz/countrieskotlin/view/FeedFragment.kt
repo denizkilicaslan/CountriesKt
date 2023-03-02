@@ -1,4 +1,4 @@
-package com.denizzz.countrieskotlin
+package com.denizzz.countrieskotlin.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

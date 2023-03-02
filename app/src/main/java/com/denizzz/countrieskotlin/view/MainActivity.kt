@@ -1,4 +1,4 @@
-package com.denizzz.countrieskotlin
+package com.denizzz.countrieskotlin.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
