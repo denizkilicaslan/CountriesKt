@@ -19,7 +19,7 @@ class FeedViewModel: ViewModel() {
      val  countryList= arrayListOf<Country>(country,country1,country2)
      countries.value=countryList
      countryError.value= false
-     countryLoading.value=false
+     countryLoading.value=true
 
 
  }

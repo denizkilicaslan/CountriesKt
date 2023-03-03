@@ -62,17 +62,46 @@ class FeedFragment : Fragment() {
         _binding?.recyclerCountryList?.layoutManager=LinearLayoutManager(context)
         _binding?.recyclerCountryList?.adapter=countryAdapter
 
+
+        observeLiveData()
     }
 
 
     fun observeLiveData(){
-        viewModel.countries.observe(this, Observer {countries ->
+        viewModel.countries.observe(viewLifecycleOwner, Observer {countries ->
             countries?.let {
                 _binding?.recyclerCountryList?.visibility=View.VISIBLE
                 countryAdapter.updateCountryList(countries)
             }
 
         })
+
+        viewModel.countryError.observe(viewLifecycleOwner, Observer { error ->
+            error?.let {
+                if (it) {
+                    _binding?.CountryError?.visibility=View.VISIBLE
+                    _binding?.recyclerCountryList?.visibility=View.INVISIBLE
+                }else{
+                    _binding?.CountryError?.visibility=View.GONE
+                }
+            }
+
+        })
+
+        viewModel.countryLoading.observe(viewLifecycleOwner, Observer { loading->
+            loading?.let {
+                if (it){
+                    _binding?.CountryLoadingProgress?.visibility=View.VISIBLE
+                    _binding?.recyclerCountryList?.visibility=View.INVISIBLE
+                    _binding?.CountryError?.visibility=View.INVISIBLE
+                }else{
+                    _binding?.CountryLoadingProgress?.visibility=View.INVISIBLE
+                }
+            }
+
+        })
+
+
     }
 
     override fun onDestroyView() {
