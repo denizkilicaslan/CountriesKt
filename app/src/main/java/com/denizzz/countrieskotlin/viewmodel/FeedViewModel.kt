@@ -12,14 +12,14 @@ class FeedViewModel: ViewModel() {
 
  fun refreshData(){
      val country=Country("Turkey","Asia","Ankara","TL","Turkish","www.sss")
-     val country1=Country("Turkey","Asia","Ankara","TL","Turkish","www.sss")
-     val country2=Country("Turkey","Asia","Ankara","TL","Turkish","www.sss")
+     val country1=Country("Turkey1","Asia1","Ankara","TL","Turkish","www.sss")
+     val country2=Country("Turkey2","Asia2","Ankara","TL","Turkish","www.sss")
 
 
      val  countryList= arrayListOf<Country>(country,country1,country2)
      countries.value=countryList
      countryError.value= false
-     countryLoading.value=true
+     countryLoading.value=false
 
 
  }

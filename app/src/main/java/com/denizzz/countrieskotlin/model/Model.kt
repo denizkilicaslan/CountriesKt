@@ -1,6 +1,6 @@
 package com.denizzz.countrieskotlin.model
 
-data class Country(
+ public data class Country(
     val countryName:String?,
     val countryRegion:String?,
     val countryCapital:String?,

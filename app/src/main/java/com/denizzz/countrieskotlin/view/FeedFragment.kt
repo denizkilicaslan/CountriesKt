@@ -67,7 +67,7 @@ class FeedFragment : Fragment() {
     }
 
 
-    fun observeLiveData(){
+    private fun observeLiveData(){
         viewModel.countries.observe(viewLifecycleOwner, Observer {countries ->
             countries?.let {
                 _binding?.recyclerCountryList?.visibility=View.VISIBLE
