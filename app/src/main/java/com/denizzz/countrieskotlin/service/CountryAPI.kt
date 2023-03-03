@@ -15,6 +15,4 @@ interface CountryAPI {
     @GET("atilsamancioglu/IA19-DataSetCountries/master/countrydataset.json")
     //fun getCountries():Call<> retrofit
     fun getCountries():Single<List<Country>>
-    
-
 }
