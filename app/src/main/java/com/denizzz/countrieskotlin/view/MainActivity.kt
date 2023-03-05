@@ -3,6 +3,7 @@ package com.denizzz.countrieskotlin.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.denizzz.countrieskotlin.databinding.ActivityMainBinding
+import com.denizzz.countrieskotlin.util.myExxtension
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -13,6 +14,10 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        /* Extension *****
+        val myStr="Deniz"
+        myStr.myExxtension("Deniz")
+         */
 
 
 
