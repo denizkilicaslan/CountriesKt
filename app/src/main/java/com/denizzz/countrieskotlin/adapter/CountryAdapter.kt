@@ -3,11 +3,14 @@ package com.denizzz.countrieskotlin.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.denizzz.countrieskotlin.R
 import com.denizzz.countrieskotlin.model.Country
+import com.denizzz.countrieskotlin.util.downloadFromUrl
+import com.denizzz.countrieskotlin.util.placeholderProgressBar
 import com.denizzz.countrieskotlin.view.FeedFragmentDirections
 
 class CountryAdapter(val countryList:ArrayList<Country>):RecyclerView.Adapter <CountryAdapter.CountryViewHolder>() {
@@ -36,6 +39,8 @@ class CountryAdapter(val countryList:ArrayList<Country>):RecyclerView.Adapter <C
             val actions=FeedFragmentDirections.actionFeedFragmentToCountryFragment()
             Navigation.findNavController(it).navigate(actions)
         }
+        var country_img=holder.view.findViewById<ImageView>(R.id.imageView)
+        country_img.downloadFromUrl(countryList[position].imageUrl, placeholderProgressBar(holder.view.context))
 
 
     }
