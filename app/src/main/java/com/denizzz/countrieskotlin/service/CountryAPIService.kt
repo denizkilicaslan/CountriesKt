@@ -22,9 +22,8 @@ class CountryAPIService {
         .create(CountryAPI::class.java)
 
     fun getData() : Single<List<Country>>{
-
         return api.getCountries()
-        //CountryAPI interface member 
+        //CountryAPI interface member
     }
 
 

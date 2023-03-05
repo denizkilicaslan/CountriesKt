@@ -15,4 +15,6 @@ interface CountryAPI {
     @GET("atilsamancioglu/IA19-DataSetCountries/master/countrydataset.json")
     //fun getCountries():Call<> retrofit
     fun getCountries():Single<List<Country>>
+    //nasıl bir call yapılacağı call observable
+    //https://bugfender.com/blog/data-flows-in-rxjava2-observable-flowable-single-maybe-completable/
 }
