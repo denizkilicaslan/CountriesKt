@@ -21,8 +21,8 @@ class FeedViewModel: ViewModel() {
 
  fun refreshData(){
 
-//    getDataFromAPI()
-
+    getDataFromAPI()
+/*
      val country=Country("Turkey","Asia","Ankara","TL","Turkish","www.sss")
      val country1=Country("Turkey1","Asia1","Ankara","TL","Turkish","www.sss")
      val country2=Country("Turkey2","Asia2","Ankara","TL","Turkish","www.sss")
@@ -34,9 +34,11 @@ class FeedViewModel: ViewModel() {
      countryLoading.value=false
 
 
+
+ */
  }
 
-    /*private fun getDataFromAPI(){
+    private fun getDataFromAPI(){
         countryLoading.value=true
         disposable.add(
             countryApiService.getData()
@@ -46,8 +48,9 @@ class FeedViewModel: ViewModel() {
 
                     override fun onSuccess(t: List<Country>) {
                         countries.value=t
-                        countryLoading.value=true
+                        countryLoading.value=false
                         countryError.value=false
+                        println(t)
                     }
 
                     override fun onError(e: Throwable) {
@@ -64,7 +67,7 @@ class FeedViewModel: ViewModel() {
     }
 
 
-     */
+
 
 
 }

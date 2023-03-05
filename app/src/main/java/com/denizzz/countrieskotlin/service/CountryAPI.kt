@@ -12,6 +12,8 @@ interface CountryAPI {
     //BASEURL  https://raw.githubusercontent.com/
     //EXT     atilsamancioglu/IA19-DataSetCountries/master/countrydataset.json
 
+    //https://raw.githubusercontent.com/atilsamancioglu/IA19-DataSetCountries/master/countrydataset.json
+
     @GET("atilsamancioglu/IA19-DataSetCountries/master/countrydataset.json")
     //fun getCountries():Call<> retrofit
     fun getCountries():Single<List<Country>>
