@@ -62,6 +62,15 @@ class FeedFragment : Fragment() {
         _binding?.recyclerCountryList?.layoutManager=LinearLayoutManager(context)
         _binding?.recyclerCountryList?.adapter=countryAdapter
 
+        _binding?.swipeRefreshLayout?.setOnRefreshListener {
+                _binding?.recyclerCountryList?.visibility=View.GONE
+                _binding?.CountryError?.visibility=View.GONE
+                _binding?.CountryLoadingProgress?.visibility=View.VISIBLE
+
+                viewModel.refreshData()
+                _binding!!.swipeRefreshLayout.isRefreshing=false
+
+        }
 
         observeLiveData()
     }
