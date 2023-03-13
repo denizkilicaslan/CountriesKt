@@ -19,6 +19,7 @@ abstract class CountryDatabase : RoomDatabase() {
         @Volatile private var instance:CountryDatabase?=null
         private val lock=Any()
 
+        // sync cunku farklı threadlerden ulasıldıgında tek bı yerden ulasım saglansın
         operator fun invoke(context: Context)= instance ?: synchronized(lock){
             instance?: makeDatabase(context).also {
                 instance=it
