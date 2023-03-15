@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.denizzz.countrieskotlin.model.Country
 import com.denizzz.countrieskotlin.service.CountryAPIService
 import com.denizzz.countrieskotlin.service.CountryDatabase
+import com.denizzz.countrieskotlin.util.CustomSharedPreferences
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -17,6 +18,8 @@ class FeedViewModel(application: Application): BaseViewModel(application) {
 
     private val countryApiService=CountryAPIService()
     private val disposable=CompositeDisposable()
+    private var customPreferences=CustomSharedPreferences(getApplication())
+
 
     val countries= MutableLiveData<List<Country>>()
     val countryError=MutableLiveData<Boolean>()
@@ -93,6 +96,8 @@ class FeedViewModel(application: Application): BaseViewModel(application) {
             showCountries(list)
 
         }
+
+        customPreferences.saveTime(System.nanoTime())
 
     }
 
