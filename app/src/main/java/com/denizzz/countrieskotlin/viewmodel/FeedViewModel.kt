@@ -1,6 +1,7 @@
 package com.denizzz.countrieskotlin.viewmodel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.denizzz.countrieskotlin.model.Country
@@ -20,6 +21,8 @@ class FeedViewModel(application: Application): BaseViewModel(application) {
     private val disposable=CompositeDisposable()
     private var customPreferences=CustomSharedPreferences(getApplication())
 
+    private var refreshTime =10 * 60 * 1000 * 1000 * 1000L
+
 
     val countries= MutableLiveData<List<Country>>()
     val countryError=MutableLiveData<Boolean>()
@@ -27,7 +30,13 @@ class FeedViewModel(application: Application): BaseViewModel(application) {
 
  fun refreshData(){
 
-    getDataFromAPI()
+     val updateTime=customPreferences.getTıme()
+     if (updateTime != null && updateTime!=0L && System.nanoTime()-updateTime < refreshTime) {
+         getDataFromSQlite()
+     }else{
+         getDataFromAPI()
+
+     }
 /*
      val country=Country("Turkey","Asia","Ankara","TL","Turkish","www.sss")
      val country1=Country("Turkey1","Asia1","Ankara","TL","Turkish","www.sss")
@@ -44,6 +53,16 @@ class FeedViewModel(application: Application): BaseViewModel(application) {
  */
  }
 
+    private fun getDataFromSQlite() {
+        launch {
+            val countries=CountryDatabase(getApplication()).countryDao().getAllCountries()
+            showCountries(countries)
+            Toast.makeText(getApplication(),"Countries from SQlite",Toast.LENGTH_LONG).show()
+        }
+
+
+    }
+
     private fun getDataFromAPI(){
         countryLoading.value=true
         disposable.add(
@@ -59,6 +78,7 @@ class FeedViewModel(application: Application): BaseViewModel(application) {
                         println(t)
                         */
                         storeInSQlite(t)
+                        Toast.makeText(getApplication(),"Countries from API",Toast.LENGTH_LONG).show()
 
                     }
 
