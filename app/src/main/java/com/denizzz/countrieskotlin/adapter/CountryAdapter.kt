@@ -36,7 +36,8 @@ class CountryAdapter(val countryList:ArrayList<Country>):RecyclerView.Adapter <C
 
 
         holder.view.setOnClickListener {
-            val actions=FeedFragmentDirections.actionFeedFragmentToCountryFragment()
+            val actions=FeedFragmentDirections.actionFeedFragmentToCountryFragment(countryList[position].uuid)
+            //actions.countryUuid
             Navigation.findNavController(it).navigate(actions)
         }
         var country_img=holder.view.findViewById<ImageView>(R.id.imageView)
