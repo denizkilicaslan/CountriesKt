@@ -5,9 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.denizzz.countrieskotlin.R
+import com.denizzz.countrieskotlin.databinding.ItemCountryRowBinding
 import com.denizzz.countrieskotlin.model.Country
 import com.denizzz.countrieskotlin.util.downloadFromUrl
 import com.denizzz.countrieskotlin.util.placeholderProgressBar
@@ -15,20 +17,28 @@ import com.denizzz.countrieskotlin.view.FeedFragmentDirections
 
 class CountryAdapter(val countryList:ArrayList<Country>):RecyclerView.Adapter <CountryAdapter.CountryViewHolder>() {
 
-    class CountryViewHolder (var view: View): RecyclerView.ViewHolder(view){
+    class CountryViewHolder (var view: ItemCountryRowBinding): RecyclerView.ViewHolder(view.root){
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         //layout ile adapter bağlanır
         val inflater=LayoutInflater.from(parent.context)
-        val view=inflater.inflate(R.layout.item_country_row,parent,false)
+        //val view=inflater.inflate(R.layout.item_country_row,parent,false)
+        val view=DataBindingUtil.inflate<ItemCountryRowBinding>(inflater,R.layout.item_country_row,parent,false)
         return CountryViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
      //item_country_row  item lara ulasılıabılır
-        var country_name=holder.view.findViewById<TextView>(R.id.country_name_r)
+
+        holder.view.country=countryList[position]
+
+
+
+     /* old vers
+
+       var country_name=holder.view.findViewById<TextView>(R.id.country_name_r)
         var country_region=holder.view.findViewById<TextView>(R.id.country_region_r)
 
         country_name.text=countryList[position].countryName
@@ -42,6 +52,7 @@ class CountryAdapter(val countryList:ArrayList<Country>):RecyclerView.Adapter <C
         }
         var country_img=holder.view.findViewById<ImageView>(R.id.imageView)
         country_img.downloadFromUrl(countryList[position].imageUrl, placeholderProgressBar(holder.view.context))
+      */
 
 
     }
