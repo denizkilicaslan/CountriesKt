@@ -6,11 +6,28 @@
         <variable
             name="country"
             type="com.denizzz.countrieskotlin.model.Country" />
+
+        <variable
+            name="listener"
+            type="com.denizzz.countrieskotlin.adapter.CountryClickListener" />
     </data>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="150dp"
+        android:onClick="@{listener::onCountryClicked}"
+
+        >
+
+        <TextView
+            android:id="@+id/countryUuidText_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@{String.valueOf(country.uuid)}"
+            >
+
+        </TextView>
 
         <ImageView
             android:id="@+id/imageView"
