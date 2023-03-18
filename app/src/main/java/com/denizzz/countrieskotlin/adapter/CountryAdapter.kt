@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.IntegerRes
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -68,11 +69,11 @@ class CountryAdapter(val countryList:ArrayList<Country>):RecyclerView.Adapter <C
     }
 
     override fun onCountryClicked(v: View) {
-        super.onCountryClicked(v)
-       val uuid=v.findViewById<TextView>(R.id.countryUuidText_r).toString().toInt()
-        val actions=FeedFragmentDirections.actionFeedFragmentToCountryFragment(uuid)
+        //super.onCountryClicked(v)
+       var uuid=v.findViewById<TextView>(R.id.countryUuidText_r)
+        var x=Integer.parseInt(uuid.toString())
+        val actions=FeedFragmentDirections.actionFeedFragmentToCountryFragment(x)
         //actions.countryUuid
         Navigation.findNavController(v).navigate(actions)
-
     }
 }
