@@ -32,8 +32,10 @@ class CountryAdapter(val countryList:ArrayList<Country>):RecyclerView.Adapter <C
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
      //item_country_row  item lara ulasılıabılır
-        holder.view.country=countryList[position]
+        //holder.view.country=countryList[position]
+        holder.view.countryR=countryList[position]
         holder.view.listener=this
+
 
 
 
@@ -69,9 +71,9 @@ class CountryAdapter(val countryList:ArrayList<Country>):RecyclerView.Adapter <C
     }
 
     override fun onCountryClicked(v: View) {
-        //super.onCountryClicked(v)
-       var uuid=v.findViewById<TextView>(R.id.countryUuidText_r)
-        var x=Integer.parseInt(uuid.toString())
+        super.onCountryClicked(v)
+       val uuid=v.findViewById<TextView>(R.id.countryUuidText_r)
+        val x=Integer.parseInt(uuid.text.toString())
         val actions=FeedFragmentDirections.actionFeedFragmentToCountryFragment(x)
         //actions.countryUuid
         Navigation.findNavController(v).navigate(actions)

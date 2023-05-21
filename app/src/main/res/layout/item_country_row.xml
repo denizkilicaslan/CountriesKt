@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="country"
+            name="countryR"
             type="com.denizzz.countrieskotlin.model.Country" />
 
         <variable
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:text="@{String.valueOf(country.uuid)}"
+            android:text="@{String.valueOf(countryR.uuid)}"
             >
 
         </TextView>
@@ -36,7 +36,7 @@
             android:layout_weight="2"
             android:padding="3dp"
             android:src="@mipmap/ic_launcher_round"
-            android:downloadUrlmy="@{country.imageUrl}">
+            android:downloadUrlmy="@{countryR.imageUrl}">
         </ImageView>
 
 
@@ -51,7 +51,7 @@
                 android:id="@+id/country_name_r"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{country.countryName}"
+                android:text="@{countryR.countryName}"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:padding="5dp">
@@ -61,7 +61,7 @@
                 android:id="@+id/country_region_r"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{country.countryRegion}"
+                android:text="@{countryR.countryRegion}"
                 android:textSize="16sp"
                 android:padding="5dp">
             </TextView>
